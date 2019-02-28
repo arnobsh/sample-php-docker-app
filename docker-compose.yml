@@ -1,0 +1,19 @@
+version: "3.2"
+services:
+  apache_server:
+    build: .
+    environment:
+        TZ: America/Los_Angeles
+        XDEBUG_CONFIG: remote_host=host.docker.internal remote_port=9000 remote_autostart=1
+        APPLICATION_ENV: "local"
+        APP_SITE_ENV: "local"
+    ports:
+      - 443:443
+      - 4000:3306
+      - 80:80
+      - 8080:8080
+      - 8081:8081
+      - 8082:8082
+      - 3000:3000
+    volumes:
+      - ./:/var/www  
